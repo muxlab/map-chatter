@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Map Chatter</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <% if (!user) { %>
+      <div id="title">
+        <h1>Map Chatter</h1>
+        <p>You can talk with people all over the world on this map.</p>
+        <p>Feel free to join with Facebook login.</p>
+        <a href="/auth/facebook"><img src="img/login-with-facebook.png" width="154" height="22"></a>
+      </div>
+    <% } else { %>
+      <div id="logout">
+        <p>Hello! <span id="name"><%= name %></span><img id="<%= id %>" class="avator-icon" src="https://graph.facebook.com/<%= id %>/picture" /></p>
+        <a href="/logout"><p>logout?</p></a>
+      </div>
+    <% } %>
+
+    <div id="message-form">
+      <% if (!user) { %>
+        <input class="chatter" type="form" /><button class="btn btn-disabled">Send</button>
+      <% } else { %>
+        <input class="chatter" type="form" /><button class="btn btn-chatter">Send</button>
+      <% } %>
+    </div>
+    <div id="map"></div>
+
+    <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+
+    <% if (user) { %>
+      <script src="js/main.js"></script>
+    <% } %>
+
+    <!--<script src="js/ga.js"></script>-->
+  </body>
+</html>
