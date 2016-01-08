@@ -11,7 +11,7 @@
     "url": "git+https://github.com/muxlab/map-chatter.git"
   },
   "keywords": [
-    "leaflet"
+    "leaflet",
     "map",
     "facebook",
     "chat",
